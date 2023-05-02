@@ -11,6 +11,8 @@
 // Global varibles and Declarations
 PImage city;
 int score;
+int[] cityX; // city x coordinate
+int[] cityY; // city y coordinate
 
 
 /*************************************************************************************************
@@ -21,15 +23,33 @@ void setup(){
   size(1200,800);
   
   score = 0;
-  city = loadImage("City.png");
+  city = loadImage("city.png");
+  
+  //sets city X postion
+  cityX = new int[4];
+  cityX[0] = 180;
+  cityX[1] = 380;
+  cityX[2] = 740;
+  cityX[3] = 940;
+  
+  //sets city Y position
+  cityY = new int[4];
+  cityY[0] = 650;
+  cityY[1] = 650;
+  cityY[2] = 650;
+  cityY[3] = 650;
+ 
+  
   
 }
+
   
 /*************************************************************************************************
 * draw() - Iteratively render the game
 *************************************************************************************************/
 void draw(){
-  background(255);
+  background(200);
+  
   //hides mouse cursor and displays crosshair
   noCursor();
   strokeWeight(3);
@@ -52,9 +72,8 @@ void draw(){
   rect(550, 680, 100, 50);
   
   //displays citys
-  image(city, 180, 650);
-  image(city, 380, 650);
-  image(city, 740, 650);
-  image(city, 940, 650);
+  for(int i=0; i<cityX.length; i++){
+    image(city, cityX[i], cityY[i]);
+  }
 
 }
